@@ -12,7 +12,9 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
-
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
