@@ -4,7 +4,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost"]
 
-INSTALLED_APPS = INSTALLED_APPS + [
-    "rest_framework",
-    "app1",
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
 ]
