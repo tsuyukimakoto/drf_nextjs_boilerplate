@@ -1,0 +1,19 @@
+[tool.poetry]
+packages = [
+    { include = "prj" },
+    { include = "app1" },
+]
+version = "0.1.0"
+description = ""
+authors = ["makoto tsuyuki <mtsuyuki@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+djangorestframework = "^3.13.1"
+Django = "^4.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
