@@ -28,9 +28,8 @@ jobs:
             node_modules
           key: node-v${{ matrix.node }}-node-modules-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
       - name: Install node_modules
-        run:
-          yarn --check-files --frozen-lockfile --non-interactive
-          working-directory: ./frontend
+        run: yarn --check-files --frozen-lockfile --non-interactive
+        working-directory: ./frontend
 
   lint:
     runs-on: ubuntu-latest
