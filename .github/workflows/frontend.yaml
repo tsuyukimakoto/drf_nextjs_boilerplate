@@ -27,6 +27,7 @@ jobs:
           path: |
             node_modules
           key: node-v${{ matrix.node }}-node-modules-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+      - run: echo '${{ toJSON(steps.node_modules_cache.outputs) }}'
       - name: Install node_modules
         run: yarn --check-files --frozen-lockfile --non-interactive
         working-directory: ./frontend
