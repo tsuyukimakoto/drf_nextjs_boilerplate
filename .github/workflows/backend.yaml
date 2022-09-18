@@ -1,4 +1,4 @@
-name: drf nextjs boilerplate CI
+name: backend
 
 on:
   push:
