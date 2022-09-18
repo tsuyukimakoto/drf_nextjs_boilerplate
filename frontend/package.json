@@ -9,7 +9,7 @@
     "lint": "next lint --dir src",
     "lint:fix": "next lint --dir src --fix",
     "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write .",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
     "prepare": "cd .. && husky install frontend/.husky"
   },
   "lint-staged": {
@@ -31,6 +31,7 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
+    "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
