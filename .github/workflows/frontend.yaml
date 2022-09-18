@@ -35,6 +35,9 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+    defaults:
+      run:
+        working-directory: ./frontend
     needs: setup
     steps:
       - uses: actions/checkout@v3
@@ -61,6 +64,9 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+    defaults:
+      run:
+        working-directory: ./frontend
     needs: setup
     steps:
       - uses: actions/checkout@v3
