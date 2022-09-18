@@ -26,7 +26,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: node-v${{ matrix.node }}-node-modules-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
       - run: echo '${{ toJSON(steps.node_modules_cache.outputs) }}'
       - name: Install node_modules
         run: yarn --check-files --frozen-lockfile --non-interactive
@@ -55,7 +55,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: node-v${{ matrix.node }}-node-modules-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
       - name: Check prettier format
         run: yarn format:check
       - name: Lint
@@ -84,7 +84,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: node-v${{ matrix.node }}-node-modules-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
       - name: Test
         run: |
           yarn type-check
