@@ -20,9 +20,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
           cache-dependency-path: ./frontend/yarn.lock
-      - name: Install node_modules
-        run: yarn install --check-files --frozen-lockfile --non-interactive
-        working-directory: ./frontend
       - name: Cache node_modules
         id: node_modules_cache
         uses: actions/cache@v3
@@ -30,6 +27,9 @@ jobs:
           path: |
             frontend/node_modules
           key: node-v${{ matrix.node-version }}-node-modules-${{ hashFiles('frontend/yarn.lock') }}
+      - name: Install node_modules
+        run: yarn install --check-files --frozen-lockfile --non-interactive
+        working-directory: ./frontend
 
   lint:
     runs-on: ubuntu-latest
