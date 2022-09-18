@@ -20,17 +20,16 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
           cache-dependency-path: ./frontend/yarn.lock
-      # - name: Cache node_modules
-      #   id: node_modules_cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       node_modules
-      #     key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
-      # - run: echo '${{ toJSON(steps.node_modules_cache.outputs) }}'
       - name: Install node_modules
         run: yarn install --check-files --frozen-lockfile --non-interactive
         working-directory: ./frontend
+      - name: Cache node_modules
+        id: node_modules_cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
 
   lint:
     runs-on: ubuntu-latest
@@ -56,9 +55,6 @@ jobs:
           path: |
             node_modules
           key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
-      - name: Install node_modules
-        run: yarn install --check-files --frozen-lockfile --non-interactive
-        working-directory: ./frontend
       - name: Check prettier format
         run: yarn format:check
       - name: Lint
