@@ -28,8 +28,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            node_modules
-          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
+            frontend/node_modules
+          key: node-v${{ matrix.node-version }}-node-modules-${{ hashFiles('frontend/yarn.lock') }}
 
   lint:
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
+          key: node-v${{ matrix.node-version }}-node-modules-${{ hashFiles('yarn.lock') }}
       - name: Check prettier format
         run: yarn format:check
       - name: Lint
@@ -83,7 +83,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
+          key: node-v${{ matrix.node-version }}-node-modules-${{ hashFiles('yarn.lock') }}
       - name: Test
         run: |
           yarn type-check
