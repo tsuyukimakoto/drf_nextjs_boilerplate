@@ -53,8 +53,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            node_modules
-          key: node-v${{ matrix.node-version }}-node-modules-${{ hashFiles('yarn.lock') }}
+            frontend/node_modules
+          key: node-v${{ matrix.node-version }}-node-modules-${{ hashFiles('frontend/yarn.lock') }}
       - name: Check prettier format
         run: yarn format:check
       - name: Lint
