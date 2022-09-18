@@ -51,7 +51,9 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: ./frontend/yarn.lock
       - name: Check prettier format
-        run: yarn format:check
+        run: |
+          yarn install prettier
+          yarn format:check
       - name: Lint
         run: yarn lint
 
