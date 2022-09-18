@@ -29,7 +29,7 @@ jobs:
           key: node-v${{ matrix.node-version }}-node-modules-frontend-yarn.lock
       - run: echo '${{ toJSON(steps.node_modules_cache.outputs) }}'
       - name: Install node_modules
-        run: yarn --check-files --frozen-lockfile --non-interactive
+        run: yarn install --check-files --frozen-lockfile --non-interactive
         working-directory: ./frontend
 
   lint:
