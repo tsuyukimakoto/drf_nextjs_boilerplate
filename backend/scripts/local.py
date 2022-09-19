@@ -29,5 +29,13 @@ def server():
     __run(["runserver"])
 
 
+def make_migrations():
+    __run(["makemigrations"])
+
+
 def migrate():
     __run(["migrate"])
+
+
+def createsuperuser():
+    __run(["createsuperuser"])

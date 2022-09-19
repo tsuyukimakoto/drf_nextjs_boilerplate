@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from datetime import timedelta
 import os
 from pathlib import Path
 
@@ -134,7 +135,10 @@ INSTALLED_APPS = INSTALLED_APPS + [
     "rest_framework",
     "djoser",
     "app1",
+    "email_user",
 ]
+
+AUTH_USER_MODEL = 'email_user.EmailUser'
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -142,11 +146,15 @@ MIDDLEWARE = [
 
 
 SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES": ("Token",),
+    'AUTH_HEADER_TYPES':('JWT'),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60)
 }
 
 # Rest Framework Settings
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
