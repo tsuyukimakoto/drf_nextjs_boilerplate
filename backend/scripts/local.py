@@ -1,4 +1,5 @@
 from audioop import add
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 import subprocess
@@ -10,7 +11,7 @@ BASE_COMMAND = [
 ]
 ROOT_DIR = Path(__file__).resolve().parent.parent
 
-os.environ["DJANGO_SETTINGS_MODULE"] = "prj.settings.local"
+load_dotenv()
 os.environ["PYTHONPATH"] = "{ROOT_DIR}:{PYTHONPATH}".format(
     ROOT_DIR=ROOT_DIR,
     PYTHONPATH=":".join(sys.path),
